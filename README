@@ -1,0 +1,44 @@
+
+Nanocorr
+
+Error correction for oxford nanopore reads
+
+
+Requires:
+        Blast to be in path
+        SGE or similar scheduler that can 
+
+Installation:
+        Make a python virtual environment on a cluster
+        with a shared filesystem
+
+        >virtualenv nanocorr
+        >source nanocorr/bin/activate
+        
+        > python setup.py install 
+
+
+Running:
+        Make sure you are in the virtualenv
+        >source nanocorr/bin/activate
+
+        Partition your reads for distributed processing
+        >python partition.py 100 500 input.fa
+        
+        A series of directories will be created by the partitioning
+        [0001,0002,...]. In each directory run the nanocorr.py script
+        on SGE or similar system that sets SGE_TASK_ID environment
+        variable. Set the -t parameter to the number of files in the 
+        directory.
+        
+        >qsub -cwd -v PATH,LD_LIBRARY_PATH -t 1:500 -j y -o nanocorr_out /path/to/nanocorr.py query.fa reference.fa
+        
+        The query file will be "blasted" against each previously partitioned read.        
+        The corrected reads will be in the resulting "fa" files in the partition
+        directories.
+        If you supply a reference genome, the corrected reads will be blasted
+        against that and a ".refblast6.q" file will be created for each partition.
+        This will be the corrected reads aligned to the reference. Just make sure
+        the blast db has been created for the reference.
+
+        
