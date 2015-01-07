@@ -38,7 +38,7 @@ Running:
         >source nanocorr/nanocorr_ve/bin/activate
 
         Partition your reads for distributed processing
-        >python partition.py 100 500 input.fa
+        >python partition.py 100 500 nanopore_reads.fa
         
         A series of directories will be created by the partitioning
         [0001,0002,...]. In each directory run the nanocorr.py script
@@ -49,6 +49,8 @@ Running:
         >qsub -cwd -v PATH,LD_LIBRARY_PATH -t 1:500 -j y -o nanocorr_out /path/to/nanocorr.py query.fa reference.fa
         
         The query file will be "blasted" against each previously partitioned read.        
+        This query file can be anything useful for correction. 
+        Illumina data is what is used right now.
         The corrected reads will be in the resulting "fa" files in the partition
         directories.
         If you supply a reference genome, the corrected reads will be blasted
