@@ -6,7 +6,7 @@ Error correction for oxford nanopore reads
 
 Requires:
         Blast to be in path
-        SGE or similar scheduler that can 
+        SGE or similar scheduler
 
 Installation:
         Make a python virtual environment on a cluster
@@ -15,8 +15,23 @@ Installation:
         >virtualenv nanocorr
         >source nanocorr/bin/activate
         
-        > python setup.py install 
+        install the following packages using pip:
 
+
+        pip install git+https://github.com/cython/cython
+        pip install numpy
+        pip install h5py
+        pip install git+https://github.com/PacificBiosciences/pbcore
+        pip install git+https://github.com/PacificBiosciences/pbdagcon
+        pip install git+https://github.com/jgurtowski/jbio
+        pip install git+https://github.com/jgurtowski/jptools
+        
+        
+        Clone the repo
+        
+        > git clone https://github.com/jgurtowski/nanocorr
+        > cd nanocorr
+        > python setup.py install
 
 Running:
         Make sure you are in the virtualenv
