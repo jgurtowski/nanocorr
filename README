@@ -9,28 +9,28 @@ Requires:
         SGE or similar scheduler
 
 Installation:
-        Make a python virtual environment on a cluster
-        with a shared filesystem
+        Clone the repository to a shared filesysem on a cluster
+        
+        >git clone https://github.com/jgurtowski/nanocorr
+        >cd nanocorr        
+        
+        Create a virtual environment to install python dependencies
 
-        >virtualenv nanocorr
-        >source nanocorr/bin/activate
+        >virtualenv nanocorr_ve
+        >source nanocorr_ve/bin/activate
         
         install the following packages using pip:
 
-
-        pip install git+https://github.com/cython/cython
-        pip install numpy
-        pip install h5py
-        pip install git+https://github.com/PacificBiosciences/pbcore
-        pip install git+https://github.com/PacificBiosciences/pbdagcon
-        pip install git+https://github.com/jgurtowski/jbio
-        pip install git+https://github.com/jgurtowski/jptools
+            pip install git+https://github.com/cython/cython
+            pip install numpy
+            pip install h5py
+            pip install git+https://github.com/PacificBiosciences/pbcore
+            pip install git+https://github.com/PacificBiosciences/pbdagcon
+            pip install git+https://github.com/jgurtowski/jbio
+            pip install git+https://github.com/jgurtowski/jptools
         
+        Finally install the nanocorr package itself
         
-        Clone the repo
-        
-        > git clone https://github.com/jgurtowski/nanocorr
-        > cd nanocorr
         > python setup.py install
 
 Running:
