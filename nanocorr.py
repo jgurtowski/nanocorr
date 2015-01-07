@@ -8,17 +8,23 @@ def runfail(cmd):
     if not 0 == os.system(cmd):
         sys.exit("Failed : %s " % cmd)
 
-if not len(sys.argv) == 3:
+if not len(sys.argv) >= 2:
     sys.exit("blast.py query.fa reference.fa")
 
-query_file, ref_file = sys.argv[1:3]
+if len(sys.argv) == 3:
+    query_file, ref_file = sys.argv[1:3]
+    no_ref = False
+else:
+    query_file = sys.argv[1]
+    no_ref = True
+
 start_path = os.getcwd()
 
 if not os.path.exists(query_file):
     sys.exit("Missing Query File")
 if not os.path.isabs(query_file):
     query_file = os.path.join(start_path, query_file)
-if not os.path.isabs(ref_file):
+if not no_ref and not os.path.isabs(ref_file):
     ref_file = os.path.join(start_path, ref_file)
 
 
@@ -54,6 +60,9 @@ cor_params = {"raw_reads": start_file,
 runfail("correctOxford {raw_reads} {filter_out} > {cor_fa} 2> {cor_log}".format(**cor_params))
 runfail("cp {} {} {}".format(correct_fa,correct_log,start_path))
 
+
+if no_ref:
+    sys.exit(0)
 
 refblast_out = start_file + ".blast6.r.refblast6"
 ref_blast_params = {"reference": ref_file,
