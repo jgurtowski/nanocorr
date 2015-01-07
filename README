@@ -35,7 +35,7 @@ Installation:
 
 Running:
         Make sure you are in the virtualenv
-        >source nanocorr/bin/activate
+        >source nanocorr/nanocorr_ve/bin/activate
 
         Partition your reads for distributed processing
         >python partition.py 100 500 input.fa
