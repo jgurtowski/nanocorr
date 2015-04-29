@@ -59,3 +59,17 @@ Running:
         the blast db has been created for the reference.
 
         
+Non-SGE Environment:
+        If you don't have SGE installed you can use GNU parallel to run nanocorr on
+        a single machine. Although not the recommended method,
+        as alignment can be very compute intensive, for small genomes 
+        (bacteria), this method can be tractable.
+
+        For each of the directories created by the partition script (0001..000N),
+        cd into the directory and run:
+
+        $>for j in {1..500}; do 
+              echo "SGE_TASK_ID=$j TMPDIR=/tmp nanocorr.py query.fa reference.fa"; 
+          done  | parallel -j <# of compute cores>
+
+        
