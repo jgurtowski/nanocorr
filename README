@@ -25,7 +25,7 @@ Installation:
             pip install numpy
             pip install h5py
             pip install git+https://github.com/PacificBiosciences/pbcore
-            pip install git+https://github.com/PacificBiosciences/pbdagcon
+            pip install git+https://github.com/PacificBiosciences/pbdagcon@2b14fa9c4dc1df7cc8a982f5872746dd986eeac9
             pip install git+https://github.com/jgurtowski/jbio
             pip install git+https://github.com/jgurtowski/jptools
         
