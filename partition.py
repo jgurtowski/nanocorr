@@ -6,7 +6,6 @@ from itertools import starmap, chain, imap
 from operator import itemgetter
 
 from jbio.io.file import iterator_over_file_from_extension as ioffe
-from jbio.fasta import record_iterator as fasta_record_iterator
 from jbio.fasta import record_to_string as fasta_record_to_string
 from jbio.functional import compose
 
@@ -20,7 +19,7 @@ def pstr(num):
 
 in_files = sys.argv[3:]
 
-openers = map(compose(fasta_record_iterator,ioffe),in_files)
+openers = map(ioffe,in_files)
 
 input_data = chain.from_iterable(openers)
 total_reads = 0
