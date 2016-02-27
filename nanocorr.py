@@ -40,7 +40,7 @@ runfail("cp {} . ".format(os.path.join(start_path, start_file)))
 runfail("makeblastdb -dbtype nucl -in {}".format(start_file))
 
 blast6_out = start_file + ".blast6"
-runfail("blastn -db {db} -query {query} -outfmt \"6 std qlen slen qseq sseq\" -dust no -task blastn -reward 5 -penalty -4 -gapopen 8 -gapextend 6 -evalue 1e-15 -num_threads 3 | sort -k 2,2 -k 9,9n > {outfile}".format(db=start_file, query=query_file, outfile=blast6_out))
+runfail("blastn -db {db} -query {query} -outfmt \"6 std qlen slen qseq sseq\" -dust no -task blastn -reward 5 -penalty -4 -gapopen 8 -gapextend 6 -evalue 1e-15 | sort -k 2,2 -k 9,9n > {outfile}".format(db=start_file, query=query_file, outfile=blast6_out))
 
 runfail("cp {} {} ".format(blast6_out, start_path))
 
